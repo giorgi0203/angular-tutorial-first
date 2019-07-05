@@ -1,0 +1,12 @@
+<h1>Whishlist</h1>
+
+<p class="options">
+    <a *ngIf="items.length > 0" (click)="clearWhishlist()">Clear</a>
+</p>
+
+
+<div class="cart-item" *ngFor="let item of items index as itemId">
+    <a (click)="removeItem(itemId)">X</a>
+    <span> {{item.name}} </span>
+    <span> {{item.price | currency}} </span>
+</div>

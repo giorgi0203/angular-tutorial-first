@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { products } from '../products';
+import { WhishlistService } from '../whishlist.service';
 
 @Component({
   selector: 'app-product-list',
@@ -8,10 +9,27 @@ import { products } from '../products';
 })
 export class ProductListComponent {
 
+  constructor(
+    private whishlistService: WhishlistService
+  ) {
+
+  }
+
   products = products;
 
   share(name: string) {
     alert('the product: ' + name + ' has been shared');
+  }
+
+  addToWhishlist(product) {
+    alert('the product: ' + product.name + ' has been added to Whishlist');
+    if (!this.isInCart(product)) {
+      this.whishlistService.addToWhishlist(product);
+    }
+  }
+
+  isInCart(product) {
+    return this.whishlistService.getItem(product) !== -1;
   }
 
   onNotify(name: string, price: number) {
