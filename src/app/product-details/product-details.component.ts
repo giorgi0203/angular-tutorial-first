@@ -21,7 +21,17 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(product) {
     alert('item added to cart');
-    this.cartService.addToCart(product);
+    if (!this.isInCart(product)) {
+      this.cartService.addToCart(product);
+    }
+  }
+
+  isInCart(product) {
+    if (this.cartService.getItem(product) !== -1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

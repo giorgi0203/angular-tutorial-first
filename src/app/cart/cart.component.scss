@@ -1,0 +1,12 @@
+.options {
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  &.mr {
+    margin-right: 10px;
+  }
+  &.danger {
+    background-color: #f58800;
+  }
+}

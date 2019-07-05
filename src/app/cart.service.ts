@@ -19,6 +19,13 @@ export class CartService {
   getItems() {
     return this.items;
   }
+  getItem(item) {
+    return this.items.indexOf(item);
+  }
+
+  removeItem(id) {
+    return this.items.splice(id, 1);
+  }
 
   clearCart() {
     this.items = [];

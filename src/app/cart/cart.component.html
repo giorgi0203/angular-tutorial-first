@@ -1,9 +1,13 @@
 <h1>Cart</h1>
 
-<p>
+<p class="options">
     <a [routerLink]="[ '/shipping' ]">shipping</a>
+    <a *ngIf="items.length > 0" (click)="clearCart()">Clear</a>
 </p>
-<div class="cart-item" *ngFor="let item of items">
+
+
+<div class="cart-item" *ngFor="let item of items index as itemId">
+    <a (click)="removeItem(itemId)">X</a>
     <span> {{item.name}} </span>
     <span> {{item.price | currency}} </span>
 </div>
@@ -17,8 +21,8 @@
         <label> adress </label>
         <input type="text" formControlName="address">
     </div>
-    <button class="button" type="submit">Purchase</button>
-    <button class="button" type="button" (click)="setDefault()">Default</button>
+    <button class="button mr" type="submit">Purchase</button>
+    <button class="button danger" type="button" (click)="setDefault()">Default</button>
 </form>
 
 <div>

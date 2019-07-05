@@ -36,6 +36,18 @@ export class CartComponent implements OnInit {
     this.checkoutForm.get('address').setValue('kyiv');
   }
 
+  clearCart() {
+    console.warn('cart has been cleared');
+    this.items = this.cartService.clearCart();
+    this.checkoutForm.reset();
+    this.setDefault();
+  }
+
+  removeItem(itemId) {
+    console.warn('item has been removed', this.items[itemId]);
+    this.cartService.removeItem(itemId);
+  }
+
   getFormDataAsString() {
     return JSON.stringify(this.checkoutForm.value);
   }

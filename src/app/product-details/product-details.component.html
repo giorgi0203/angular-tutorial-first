@@ -5,5 +5,5 @@
     <h3>{{product.price | currency}}</h3>
     <h3>{{product.description}}</h3>
 
-    <button (click)="addToCart(product)">Buy</button>
+    <button *ngIf="!isInCart(product)" (click)="addToCart(product)">Buy</button>
 </div>
