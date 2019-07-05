@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
     this.checkoutForm = this.formBuilder.group({
       name: '',
-      adress: ''
+      address: ''
     });
   }
 
@@ -29,6 +29,15 @@ export class CartComponent implements OnInit {
     console.warn('order has been submited ', costumerData);
     this.items = this.cartService.clearCart();
     this.checkoutForm.reset();
+  }
+
+  setDefault() {
+    this.checkoutForm.get('name').setValue('John Doe');
+    this.checkoutForm.get('address').setValue('kyiv');
+  }
+
+  getFormDataAsString() {
+    return JSON.stringify(this.checkoutForm.value);
   }
 
   ngOnInit() {

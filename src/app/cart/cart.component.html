@@ -15,7 +15,14 @@
     </div>
     <div>
         <label> adress </label>
-        <input type="text" formControlName="adress">
+        <input type="text" formControlName="address">
     </div>
     <button class="button" type="submit">Purchase</button>
+    <button class="button" type="button" (click)="setDefault()">Default</button>
 </form>
+
+<div>
+    <h3>form data</h3>
+    <!-- stringify form i'am  lazy 😊😊😊😊🔥🔥🔥-->
+    {{getFormDataAsString()}}
+</div>
