@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { products } from '../products';
 import { CartService } from '../cart.service';
+import { WhishlistService } from '../whishlist.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,7 +12,11 @@ import { CartService } from '../cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
   product;
-  constructor(private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private whishlistService: WhishlistService
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -26,12 +31,18 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  isInCart(product) {
-    if (this.cartService.getItem(product) !== -1) {
-      return true;
-    } else {
-      return false;
+  addToWhishlist(product) {
+    alert('the product: ' + product.name + ' has been added to Whishlist');
+    if (!this.isInWhishlist(product)) {
+      this.whishlistService.addToWhishlist(product);
     }
+  }
+
+  isInCart(product) {
+    return this.cartService.getItem(product) !== -1;
+  }
+  isInWhishlist(product) {
+    return this.whishlistService.getItem(product) !== -1;
   }
 
 }

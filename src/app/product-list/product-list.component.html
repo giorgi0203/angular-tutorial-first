@@ -5,7 +5,7 @@
         <a [title]="product.name +' details'" [routerLink]="[ '/product', id ]">
             {{ product.name }}
         </a>
-        <a *ngIf="!isInCart(product)" (click)="addToWhishlist(product)">💖</a>
+        <a *ngIf="!isInWhishlist(product)" (click)="addToWhishlist(product)">💖</a>
     </h3>
     <p *ngIf="product.description">
         Description: {{product.description}}

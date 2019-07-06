@@ -4,7 +4,7 @@ import { WhishlistService } from '../whishlist.service';
 @Component({
   selector: 'app-whishlist',
   templateUrl: './whishlist.component.html',
-  styleUrls: ['./whishlist.component.scss']
+  styleUrls: ['./whishlist.component.scss'],
 })
 export class WhishlistComponent implements OnInit {
   items;

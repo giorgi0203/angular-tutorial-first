@@ -6,4 +6,5 @@
     <h3>{{product.description}}</h3>
 
     <button *ngIf="!isInCart(product)" (click)="addToCart(product)">Buy</button>
+    <button *ngIf="!isInWhishlist(product)" (click)="addToWhishlist(product)">Add to whishlist</button>
 </div>

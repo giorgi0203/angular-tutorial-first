@@ -23,12 +23,12 @@ export class ProductListComponent {
 
   addToWhishlist(product) {
     alert('the product: ' + product.name + ' has been added to Whishlist');
-    if (!this.isInCart(product)) {
+    if (!this.isInWhishlist(product)) {
       this.whishlistService.addToWhishlist(product);
     }
   }
 
-  isInCart(product) {
+  isInWhishlist(product) {
     return this.whishlistService.getItem(product) !== -1;
   }
 
