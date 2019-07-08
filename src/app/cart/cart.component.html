@@ -15,7 +15,7 @@
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
     <div>
         <label> name </label>
-        <input type="text" formControlName="name">
+        <input type="text" required formControlName="name">
     </div>
     <div formGroupName="address">
         <h3> adress </h3>
@@ -44,4 +44,8 @@
     <h3>form data</h3>
     <!-- stringify form i'am  lazy 😊😊😊😊🔥🔥🔥-->
     {{getFormDataAsString()}}
+
+    <p>
+        Form status: {{checkoutForm.status}}
+    </p>
 </div>
