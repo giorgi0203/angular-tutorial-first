@@ -42,10 +42,37 @@
 
 <div>
     <h3>form data</h3>
-    <!-- stringify form i'am  lazy 😊😊😊😊🔥🔥🔥-->
-    {{getFormDataAsString()}}
-
+    <p>
+        Name : {{name.value}}
+    </p>
+    <p>
+        Adress: {{address.value | json}}
+    </p>
     <p>
         Form status: {{checkoutForm.status}}
     </p>
+</div>
+
+<div>
+    <h3>Errors</h3>
+    <div *ngIf="address.invalid&&(address.dirty||address.touched)">
+        <div *ngIf="!address.errors?.zipStatus">
+            Zip length should be less then 3
+        </div>
+        <div *ngIf="!address.errors?.cityStatus">
+            city must start with A
+        </div>
+    </div>
+
+    <div *ngIf="name.invalid&&(name.dirty||name.touched)">
+        <div *ngIf="name.errors?.required">
+            name is required
+        </div>
+        <div *ngIf="name.errors?.minlength">
+            Name must be at las 4 characters
+        </div>
+        <div *ngIf="name.errors?.forbiddenName.isValid">
+            Name must not be {{name.value}}
+        </div>
+    </div>
 </div>
