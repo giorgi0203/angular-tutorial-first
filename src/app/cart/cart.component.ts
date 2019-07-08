@@ -32,8 +32,9 @@ export class CartComponent implements OnInit {
   }
 
   setDefault() {
-    this.checkoutForm.get('name').setValue('John Doe');
-    this.checkoutForm.get('address').setValue('kyiv');
+    this.checkoutForm.patchValue({
+      name: 'Jon Doe'
+    });
   }
 
   clearCart() {
