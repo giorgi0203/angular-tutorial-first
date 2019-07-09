@@ -69,8 +69,12 @@ export class UsersComponent implements OnInit {
   }
 
   removeUser(id) {
-    this.users = [...this.userService.removeUser(id)];
-    this.bindForms();
+    const res = confirm('you are deleting user:' + this.users.email);
+    if (res) {
+      this.users = [...this.userService.removeUser(id)];
+      this.bindForms();
+    }
+
   }
   email(i) {
     return this.userForms[i].get('email') as FormControl;
