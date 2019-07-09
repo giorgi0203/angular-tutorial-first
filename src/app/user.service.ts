@@ -21,7 +21,8 @@ export class UserService {
     return this.users;
   }
   removeUser(id) {
-    this.users = [...this.users.filter((element, index) => index !== id)];
+    this.users.splice(id, 1);
+    console.log(this.users);
     return this.users;
     // localStorage.setItem('Users', JSON.stringify(this.users));
   }

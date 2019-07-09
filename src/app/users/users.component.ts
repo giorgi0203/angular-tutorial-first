@@ -63,8 +63,7 @@ export class UsersComponent implements OnInit {
   }
 
   removeUser(id) {
-    this.userService.removeUser(id);
-    this.users = this.userService.getUsers();
+    this.users = [...this.userService.removeUser(id)];
   }
   email(i) {
     return this.userForms[i].get('email') as FormControl;
