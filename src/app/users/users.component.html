@@ -1,5 +1,6 @@
 <div>
-    <table>
+    <p *ngIf="userForms.length==0">No registered users</p>
+    <table *ngIf="userForms.length>0">
         <thead>
             <th>E-mail</th>
             <th>Password</th>
@@ -11,7 +12,6 @@
         </thead>
         <tbody>
             <tr [formGroup]="userForm" *ngFor="let userForm of userForms index as i">
-
                 <td>
                     <input type="text" formControlName="email">
                     <span *ngIf="email(i).invalid && email(i).touched">
@@ -21,21 +21,37 @@
                 </td>
                 <td>
                     <input type="password" formControlName="password">
+                    <!-- <input *ngIf="password(i).invalid" type="password" formControlName="confirmPassword"> -->
                 </td>
                 <td>
                     <input type="text" formControlName="nickName">
+                    <span *ngIf="nickName(i).invalid && nickName(i).touched">
+                        <span *ngIf="nickName(i).errors?.pattern">
+                            Nickname should contain only english characters numbers and character -
+                        </span>
+                    </span>
                 </td>
                 <td>
                     <input type="text" formControlName="phone">
+                    <span *ngIf="phone(i).invalid && phone(i).touched">
+                        <span *ngIf="phone(i).errors?.pattern">
+                            Phone Number should always start from +380 then it should contain 9 numbers
+                        </span>
+                    </span>
                 </td>
                 <td>
                     <input type="text" formControlName="website">
+                    <span *ngIf="website(i).invalid && website(i).touched">
+                        <span *ngIf="website(i).errors?.pattern">
+                            Invalid Website address
+                        </span>
+                    </span>
                 </td>
                 <td>
                     <input type="checkbox" formControlName="license">
                 </td>
                 <td>
-                    <button>X</button>
+                    <button (click)="removeUser(i)">X</button>
                 </td>
                 {{userForm.status | json}}
             </tr>

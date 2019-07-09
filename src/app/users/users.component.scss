@@ -13,6 +13,7 @@ div {
                 td {
                     span {
                         display: flex;
+                        font-size: 13px;
                         color: #f56c42;
                     }
                     
@@ -23,7 +24,7 @@ div {
 
                         &.ng-invalid.ng-touched {
                             border: 1px solid #f56c42; /* red */
-                          }
+                        }
                     }
                 }
             }

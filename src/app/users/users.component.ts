@@ -53,15 +53,32 @@ export class UsersComponent implements OnInit {
 
   formChange(index, form) {
     console.log(form);
-
-    console.log(this.userForms[index].valid);
+    if (this.userForms[index].valid) {
+      this.userService.updateUser(index, form);
+      this.users = this.userService.getUsers();
+    }
   }
 
   ngOnInit() {
   }
 
+  removeUser(id) {
+    this.userService.removeUser(id);
+    this.users = this.userService.getUsers();
+  }
   email(i) {
     return this.userForms[i].get('email') as FormControl;
   }
-
+  password(i) {
+    return this.userForms[i].get('password') as FormControl;
+  }
+  nickName(i) {
+    return this.userForms[i].get('nickName') as FormControl;
+  }
+  phone(i) {
+    return this.userForms[i].get('phone') as FormControl;
+  }
+  website(i) {
+    return this.userForms[i].get('website') as FormControl;
+  }
 }
