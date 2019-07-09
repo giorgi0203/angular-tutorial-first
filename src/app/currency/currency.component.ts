@@ -23,8 +23,8 @@ export class CurrencyComponent implements OnInit {
 
       this.rates.push(value);
     };
-    const complete = (size) => {
-      this.ratesSize = size;
+    const complete = () => {
+      this.ratesSize = this.rates.length;
     };
     const filterCallBack = ({ value }) => {
       return value > 2;
