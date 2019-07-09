@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { WhishlistComponent } from './whishlist/whishlist.component';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
+import { CurrencyComponent } from './currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UsersComponent } from './users/users.component';
     ShippingComponent,
     WhishlistComponent,
     RegisterComponent,
-    UsersComponent
+    UsersComponent,
+    CurrencyComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,9 @@ import { UsersComponent } from './users/users.component';
       },
       {
         path: 'users', component: UsersComponent,
+      },
+      {
+        path: 'currency', component: CurrencyComponent,
       },
       {
         path: 'product/:productId', component: ProductDetailsComponent,

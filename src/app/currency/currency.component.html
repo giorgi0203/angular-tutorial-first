@@ -1,0 +1,6 @@
+<h1>Currenty Rates</h1>
+<ul *ngFor="let rate of rates">
+    <li><b>{{rate.currency}}</b>: {{ rate.value | currency }}</li>
+</ul>
+
+<p *ngIf="ratesSize">We received: {{ratesSize}}</p>
