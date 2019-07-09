@@ -22,7 +22,6 @@ export class UserService {
   }
   removeUser(id) {
     this.users.splice(id, 1);
-    console.log(this.users);
     return this.users;
     // localStorage.setItem('Users', JSON.stringify(this.users));
   }

@@ -16,8 +16,13 @@ export class UsersComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.users = this.userService.getUsers();
+    this.bindForms();
+  }
+
+  bindForms() {
+    this.userForms = new Array<FormGroup>();
     for (const [i, user] of this.users.entries()) {
-      const form = formBuilder.group(
+      const form = this.formBuilder.group(
         {
           email: [user.email, [
             Validators.required,
@@ -56,6 +61,7 @@ export class UsersComponent implements OnInit {
     if (this.userForms[index].valid) {
       this.userService.updateUser(index, form);
       this.users = this.userService.getUsers();
+      this.bindForms();
     }
   }
 
@@ -64,6 +70,7 @@ export class UsersComponent implements OnInit {
 
   removeUser(id) {
     this.users = [...this.userService.removeUser(id)];
+    this.bindForms();
   }
   email(i) {
     return this.userForms[i].get('email') as FormControl;
