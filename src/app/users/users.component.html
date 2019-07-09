@@ -10,29 +10,34 @@
             <th>Action</th>
         </thead>
         <tbody>
-            <tr [formGroup]="userForm" *ngFor="let userForm of userForms">
-                {{userForm.value | json}}
+            <tr [formGroup]="userForm" *ngFor="let userForm of userForms index as i">
+
                 <td>
-                    <input type="text" formControlName="email" value="{{userForm.value.email}}">
+                    <input type="text" formControlName="email">
+                    <span *ngIf="email(i).invalid && email(i).touched">
+                        <span *ngIf="email(i).errors.required">Email is required</span>
+                        <span *ngIf="email(i).errors.pattern">Incorrect Email</span>
+                    </span>
                 </td>
                 <td>
-                    <input type="password" formControlName="password" value="{{userForm.value.password}}">
+                    <input type="password" formControlName="password">
                 </td>
                 <td>
-                    <input type="text" formControlName="nickName" value="{{userForm.value.nickName}}">
+                    <input type="text" formControlName="nickName">
                 </td>
                 <td>
-                    <input type="text" formControlName="phone" value="{{userForm.value.phone}}">
+                    <input type="text" formControlName="phone">
                 </td>
                 <td>
-                    <input type="text" formControlName="website" value="{{userForm.value.website}}">
+                    <input type="text" formControlName="website">
                 </td>
                 <td>
-                    <input type="text" formControlName="license" value="{{userForm.value.license}}">
+                    <input type="checkbox" formControlName="license">
                 </td>
                 <td>
                     <button>X</button>
                 </td>
+                {{userForm.status | json}}
             </tr>
         </tbody>
     </table>

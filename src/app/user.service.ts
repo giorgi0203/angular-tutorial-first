@@ -16,7 +16,7 @@ export class UserService {
     localStorage.setItem('Users', JSON.stringify(this.users));
   }
   updateUser(id, user) {
-
+    this.users[id] = user;
   }
   removeUser() {
   }

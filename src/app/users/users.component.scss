@@ -2,7 +2,6 @@ div {
     & table {
 
         & thead {
-
             & th {
                 text-align: start;
             }
@@ -11,13 +10,20 @@ div {
         & tbody {
 
             tr {
-
                 td {
+                    span {
+                        display: flex;
+                        color: #f56c42;
+                    }
                     
                     input {
                         border: none;
                         outline: none;
                         margin: 0px;
+
+                        &.ng-invalid.ng-touched {
+                            border: 1px solid #f56c42; /* red */
+                          }
                     }
                 }
             }
