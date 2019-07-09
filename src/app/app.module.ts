@@ -13,6 +13,8 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WhishlistComponent } from './whishlist/whishlist.component';
+import { RegisterComponent } from './register/register.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { WhishlistComponent } from './whishlist/whishlist.component';
     ProductDetailsComponent,
     CartComponent,
     ShippingComponent,
-    WhishlistComponent
+    WhishlistComponent,
+    RegisterComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,12 @@ import { WhishlistComponent } from './whishlist/whishlist.component';
       },
       {
         path: 'whishlist', component: WhishlistComponent,
+      },
+      {
+        path: 'register', component: RegisterComponent,
+      },
+      {
+        path: 'users', component: UsersComponent,
       },
       {
         path: 'product/:productId', component: ProductDetailsComponent,

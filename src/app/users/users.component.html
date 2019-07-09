@@ -1,0 +1,40 @@
+<div>
+    <table>
+        <thead>
+            <th>E-mail</th>
+            <th>Password</th>
+            <th>Nickname</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>License</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr [formGroup]="userForm" *ngFor="let userForm of userForms">
+                {{userForm.value | json}}
+                <td>
+                    <input type="text" formControlName="email" value="{{userForm.value.email}}">
+                </td>
+                <td>
+                    <input type="password" formControlName="password" value="{{userForm.value.password}}">
+                </td>
+                <td>
+                    <input type="text" formControlName="nickName" value="{{userForm.value.nickName}}">
+                </td>
+                <td>
+                    <input type="text" formControlName="phone" value="{{userForm.value.phone}}">
+                </td>
+                <td>
+                    <input type="text" formControlName="website" value="{{userForm.value.website}}">
+                </td>
+                <td>
+                    <input type="text" formControlName="license" value="{{userForm.value.license}}">
+                </td>
+                <td>
+                    <button>X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- {{users | json}} -->

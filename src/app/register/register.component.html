@@ -1,0 +1,83 @@
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+    <div>
+      <label>
+        *E-mail:
+        <input type="text" formControlName="email" />
+      </label>
+      <span *ngIf="email.invalid && email.touched">
+        <span *ngIf="email.errors.required">Email is required</span>
+        <span *ngIf="email.errors.pattern">Incorrect Email</span>
+      </span>
+    </div>
+    <div>
+      <label>
+        *Password:
+        <input type="password" formControlName="password" />
+      </label>
+      <span *ngIf="
+          (password.invalid && password.touched) ||
+          (password.touched && registerForm.errors)
+        ">
+        <span *ngIf="password.errors?.required">Password is required</span>
+        <span *ngIf="password.errors?.pattern">Password should contain only english characters and numbers</span>
+        <span *ngIf="password.errors?.minlength">Password length must be greater then 7</span>
+        <span *ngIf="registerForm.errors?.passwordStatus === false">Confirmed password dont match</span>
+      </span>
+    </div>
+    <div>
+      <label>
+        *Confirm Password:
+        <input type="password" formControlName="confirmPassword" />
+      </label>
+      <!-- <span *ngIf="confirmPassword.invalid && confirmPassword.touched">error</span> -->
+    </div>
+    <div>
+      <label>
+        *Nickname:
+        <input type="text" formControlName="nickName" />
+      </label>
+      <span *ngIf="nickName.invalid && nickName.touched">
+        <span *ngIf="nickName.errors?.pattern">
+          Nickname should contain only english characters numbers and character -
+        </span>
+      </span>
+    </div>
+    <div>
+      <label>
+        *Phone Number:
+        <input type="text" formControlName="phone" />
+      </label>
+      <span *ngIf="phone.invalid && phone.touched">
+        <span *ngIf="phone.errors?.pattern">
+          Phone Number should always start from +380 then it should contain 9 numbers
+        </span>
+      </span>
+    </div>
+    <div>
+      <label>
+        *Website:
+        <input type="url" formControlName="website" />
+      </label>
+      <span *ngIf="website.invalid && website.touched">
+        <span *ngIf="website.errors?.pattern">
+          Invalid Website address
+        </span>
+      </span>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" formControlName="license" />
+        I have read the <a href="#">agreement</a>
+      </label>
+      <span *ngIf="license.invalid && license.touched">error</span>
+    </div>
+
+    <button [disabled]="registerForm.invalid || !license.value" type="submit">
+      Register
+    </button>
+  </form>
+</div>
+{{ registerForm.value | json }}
+<br />
+{{ registerForm.status }}

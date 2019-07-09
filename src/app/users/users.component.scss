@@ -1,0 +1,26 @@
+div {
+    & table {
+
+        & thead {
+
+            & th {
+                text-align: start;
+            }
+        }
+
+        & tbody {
+
+            tr {
+
+                td {
+                    
+                    input {
+                        border: none;
+                        outline: none;
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
