@@ -19,8 +19,6 @@ export class CurrencyComponent implements OnInit {
 
   ngOnInit() {
     const action = (value) => {
-      console.log(value);
-
       this.rates.push(value);
     };
     const complete = () => {
@@ -29,13 +27,14 @@ export class CurrencyComponent implements OnInit {
     const filterCallBack = ({ value }) => {
       return value > 2;
     };
-    const mapCallBack = ({ currency, value }) => {
-      return { icon: '🏦', currency, value };
+    const mapCallBack = ({ rates }) => {
+      const currency = Object.keys(rates)[0];
+      return { icon: '🏦', currency, value: rates[currency] };
     };
     const Observer = this.currencyService.Observer;
     const observable = Observer
-      .pipe(filter(filterCallBack), map(mapCallBack))
-      .subscribe(action, complete);
+      .pipe(map(mapCallBack), filter(filterCallBack))
+      .subscribe({ next: action, complete });
   }
 
 
