@@ -63,7 +63,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(user) {
     this.registerService.registerUser(user);
-    console.log(this.userService.getUser());
   }
 
   get email() {

@@ -57,7 +57,6 @@ export class UsersComponent implements OnInit {
   }
 
   formChange(index, form) {
-    console.log(form);
     if (this.userForms[index].valid) {
       this.userService.updateUser(index, form);
       this.users = this.userService.getUsers();

@@ -21,7 +21,7 @@ export class CurrencyService {
   getRate(base, symbols) {
     return new Observable((subscriber) => {
       const url = `https://api.exchangeratesapi.io/latest?base=${base}&symbols=${symbols}`;
-      // if we are converting to same base
+      // if we are converting to same base return empty object and rates will be undefined
       if (base === symbols) {
         subscriber.next({});
       } else {

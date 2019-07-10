@@ -18,7 +18,6 @@ export class CartComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.items = this.cartService.getItems();
-    console.log(this.cartService);
 
     this.checkoutForm = this.formBuilder.group({
       name: ['', [this.forbiddenName(), Validators.minLength(4)]],

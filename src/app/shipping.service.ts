@@ -12,8 +12,6 @@ export class ShippingService {
   ) { }
 
   getShippingPrice() {
-    console.log(this.http.get('/assets/shipping.json'));
-
     return this.http.get('/assets/shipping.json');
   }
 
