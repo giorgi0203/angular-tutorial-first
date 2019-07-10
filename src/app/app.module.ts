@@ -11,7 +11,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { WhishlistComponent } from './whishlist/whishlist.component';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
@@ -39,6 +39,7 @@ import { ShippingService } from './shipping.service';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([
       {
         path: '', component: ProductListComponent,
@@ -69,7 +70,7 @@ import { ShippingService } from './shipping.service';
       }
     ])
   ],
-  providers: [ShippingService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,3 +4,8 @@
     <span>{{ shipping.type }}</span>
     <span>{{ shipping.price | currency }}</span>
 </div>
+<select [(ngModel)]="selectedShipping" (change)="selectShipping($event.target.value)">
+    <option [value]="'None'">None</option>
+    <option [value]="shipping.type" *ngFor="let shipping of shippingCosts |async" >{{shipping.type}}</option>
+</select>
+<h3>Current shipping: <span *ngIf="selectedShipping">{{ selectedShipping }}</span></h3>
