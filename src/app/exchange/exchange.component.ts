@@ -85,23 +85,26 @@ export class ExchangeComponent implements OnInit {
   }
 
   calcSum() {
-    let i = 0;
+    // reset sum
+    this.sum = 0;
     // console.log(this.currencyList);
-    for (const curr of this.currencyList) {
-      this.currencyService.getRate(curr.symbol, this.symbol).subscribe({
-        next: ({ rates }) => {
-          if (rates) {
-            this.currencyList[i].symbolrate = rates[Object.keys(rates)[0]];
-            this.sum += curr.symbolrate * curr.value;
-            // console.log(this.sum);
-          } else {
-            this.currencyList[i].symbolrate = 1;
-            this.sum += curr.symbolrate * curr.value;
-          }
-          i++;
-
-        },
-      });
+    for (const [index, curr] of this.currencyList.entries()) {
+      console.log(curr);
+      if (curr.symbol !== '') {
+        this.currencyService.getRate(curr.symbol, this.symbol).subscribe({
+          next: ({ rates }) => {
+            console.log(index);
+            if (rates) {
+              this.currencyList[index].symbolrate = rates[Object.keys(rates)[0]];
+              this.sum += curr.symbolrate * curr.value;
+              // console.log(this.sum);
+            } else {
+              this.currencyList[index].symbolrate = 1;
+              this.sum += curr.symbolrate * curr.value;
+            }
+          },
+        });
+      }
     }
   }
 
