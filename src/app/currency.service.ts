@@ -18,6 +18,19 @@ export class CurrencyService {
     this.Observer = new Observable(this.subscribe());
   }
 
+  getRate(base, symbols) {
+    return new Observable((subscriber) => {
+      const url = `https://api.exchangeratesapi.io/latest?base=${base}&symbols=${symbols}`;
+      this.httpClient.get(url)
+        .subscribe((val) => {
+          subscriber.next(val);
+        });
+    });
+  }
+  getRateSymbols() {
+    return this.currencies;
+  }
+
   subscribe() {
     return (subscriber) => {
       let i = 0;
@@ -31,11 +44,6 @@ export class CurrencyService {
               subscriber.complete();
             }
           });
-        // fetch(`https://api.exchangeratesapi.io/latest?symbols=${currency}`)
-        //   .then(response => response.json())
-        //   .then((res) => {
-        //     console.log(res);
-        //   });
       });
     };
   }

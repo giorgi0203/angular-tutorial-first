@@ -21,6 +21,7 @@ div {
         & input {
           margin-bottom: 0px;
           margin-left: 10px;
+          min-width: 170px;
 
           &.ng-invalid.ng-touched {
             border: 1px solid #f56c42; /* red */

@@ -34,7 +34,11 @@ export class CartComponent implements OnInit {
   }
 
   static isZipValid(zip) {
-    return zip.length < 3;
+    if (zip) {
+      return zip.length < 3;
+    } else {
+      return false;
+    }
   }
   static isCityValid(city) {
     return city && city[0].toLowerCase() === 'a';

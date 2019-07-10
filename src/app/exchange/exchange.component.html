@@ -1,0 +1,18 @@
+<p>Exchange</p>
+
+<label>Base</label>
+<select (change)="currChange($event.target.value,'Base')">
+    <option disabled>sellect currency</option>
+    <option *ngFor="let rate of rates" [selected]="rate=='USD'" value="{{rate}}">{{rate}}</option>
+</select>
+<input type="number" [value]="lastChange==='Base' ?  baseValue : result" (change)="currValChange($event.target.value,'Base')">
+<label>symbol</label>
+<select (change)="currChange($event.target.value,'Symbol')">
+    <option disabled>sellect currency</option>
+    <option *ngFor="let rate of rates" [selected]="rate=='EUR'" value="{{rate}}">{{rate}}</option>
+</select>
+<input type="number" [value]="lastChange==='Symbol' ?  symbolValue : result" (change)="currValChange($event.target.value,'Symbol')">
+
+<div>
+    Base: {{base}}::{{baseValue}} = {{symbol}}::{{result}}
+</div>

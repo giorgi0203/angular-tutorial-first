@@ -26,6 +26,7 @@ export const data = [
     'NZD',
     'ZAR',
     'USD',
+    'EUR',
     'MXN',
     'ILS',
     'GBP',

@@ -16,6 +16,7 @@ import { WhishlistComponent } from './whishlist/whishlist.component';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import { CurrencyComponent } from './currency/currency.component';
+import { ExchangeComponent } from './exchange/exchange.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CurrencyComponent } from './currency/currency.component';
     WhishlistComponent,
     RegisterComponent,
     UsersComponent,
-    CurrencyComponent
+    CurrencyComponent,
+    ExchangeComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,9 @@ import { CurrencyComponent } from './currency/currency.component';
       },
       {
         path: 'shipping', component: ShippingComponent,
+      },
+      {
+        path: 'exchange', component: ExchangeComponent,
       },
       {
         path: 'whishlist', component: WhishlistComponent,

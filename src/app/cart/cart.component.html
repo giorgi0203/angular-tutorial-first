@@ -40,7 +40,7 @@
     <button class="button danger" type="button" (click)="setDefault()">Default</button>
 </form>
 
-<div>
+<!-- <div>
     <h3>form data</h3>
     <p>
         Name : {{name.value}}
@@ -51,7 +51,7 @@
     <p>
         Form status: {{checkoutForm.status}}
     </p>
-</div>
+</div> -->
 
 <div>
     <h3>Errors</h3>
@@ -71,7 +71,7 @@
         <div *ngIf="name.errors?.minlength">
             Name must be at las 4 characters
         </div>
-        <div *ngIf="name.errors?.forbiddenName.isValid">
+        <div *ngIf="name.errors?.forbiddenName?.isValid">
             Name must not be {{name.value}}
         </div>
     </div>

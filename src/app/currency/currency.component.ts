@@ -24,16 +24,13 @@ export class CurrencyComponent implements OnInit {
     const complete = () => {
       this.ratesSize = this.rates.length;
     };
-    const filterCallBack = ({ value }) => {
-      return value > 2;
-    };
     const mapCallBack = ({ rates }) => {
       const currency = Object.keys(rates)[0];
       return { icon: '🏦', currency, value: rates[currency] };
     };
     const Observer = this.currencyService.Observer;
     const observable = Observer
-      .pipe(map(mapCallBack), filter(filterCallBack))
+      .pipe(map(mapCallBack))
       .subscribe({ next: action, complete });
   }
 
