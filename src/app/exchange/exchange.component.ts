@@ -64,12 +64,15 @@ export class ExchangeComponent implements OnInit {
   readValue() {
     this.currencyService.getRate(this.base, this.symbol).subscribe({
       next: ({ rates }) => {
-        this.symbolRate = rates[Object.keys(rates)[0]];
-        if (this.lastChange === 'Base') {
-          this.result = this.baseValue * this.symbolRate;
-        } else if (this.lastChange === 'Symbol') {
-          this.result = this.symbolValue / this.symbolRate;
-        }
+        if (this.base !== this.symbol) {
+          this.symbolRate = rates[Object.keys(rates)[0]];
+          if (this.lastChange === 'Base') {
+            this.result = this.baseValue * this.symbolRate;
+          } else if (this.lastChange === 'Symbol') {
+            this.result = this.symbolValue / this.symbolRate;
+          }
+        } else { this.result = this.baseValue; }
+
       }
     });
   }

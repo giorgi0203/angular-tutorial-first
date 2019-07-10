@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { ShippingService } from './shipping.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { ExchangeComponent } from './exchange/exchange.component';
       }
     ])
   ],
-  providers: [],
+  providers: [ShippingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

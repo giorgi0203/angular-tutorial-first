@@ -8,7 +8,7 @@
         <option *ngFor="let rate of rates" [selected]="rate=='USD'" value="{{rate}}">{{rate}}</option>
     </select>
     <input type="number" [value]="lastChange==='Base' ?  baseValue : result"
-        (change)="currValChange($event.target.value,'Base')">
+        (keyup)="currValChange($event.target.value,'Base')">
 </div>
 
 <div>
@@ -19,7 +19,7 @@
             <option *ngFor="let rate of rates" [selected]="rate=='EUR'" value="{{rate}}">{{rate}}</option>
         </select>
         <input type="number" [value]="lastChange==='Symbol' ?  symbolValue : result"
-            (change)="currValChange($event.target.value,'Symbol')">
+            (keyup)="currValChange($event.target.value,'Symbol')">
     </div>
     <div *ngFor="let cr of currencyList index as i">
         <div>
