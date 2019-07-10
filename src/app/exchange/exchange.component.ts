@@ -38,9 +38,7 @@ export class ExchangeComponent implements OnInit {
     } else if (type === 'Symbol') {
       this.symbol = value;
     }
-    if (this.allSet()) {
-      this.readValue();
-    }
+    this.calcSum();
   }
 
   currValChange(value, type: CurrencyType) {
@@ -91,7 +89,7 @@ export class ExchangeComponent implements OnInit {
     this.sum = 0;
     for (const [index, curr] of this.currencyList.entries()) {
       if (curr.symbol !== '') {
-        this.currencyService.getRate(curr.symbol, this.symbol).subscribe({
+        this.currencyService.getRate(curr.symbol, this.base).subscribe({
           next: ({ rates }) => {
             if (rates) {
               this.currencyList[index].symbolrate = rates[Object.keys(rates)[0]];
@@ -104,6 +102,11 @@ export class ExchangeComponent implements OnInit {
         });
       }
     }
+  }
+
+  removeCurrency(index) {
+    this.currencyList.splice(index, 1);
+    this.calcSum();
   }
 
   addCurrency() {

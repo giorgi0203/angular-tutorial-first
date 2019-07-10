@@ -1,8 +1,17 @@
 select {
   margin-right: 10px;
+  
+}
+input {
+  margin-right: 5px;
 }
 .form-group {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.rm{
+  border-radius: 100%;
+  // background-color: red;
 }

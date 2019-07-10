@@ -1,7 +1,7 @@
 <h1>Exchange</h1>
-<!-- 
-<button class="btn btn-primary" (click)="addCurrency()">Add Currency</button> -->
 
+<button class="btn btn-primary" (click)="addCurrency()">Add Currency</button>
+<!-- 
 <div>
     <label>Base</label>
     <div class="form-group">
@@ -12,11 +12,10 @@
         <input class="form-control" type="number" [value]="lastChange==='Base' ?  baseValue : result"
             (keyup)="currValChange($event.target.value,'Base')">
     </div>
-
-</div>
+</div> -->
 
 <div>
-    <label>symbols</label>
+    <!-- <label>symbols</label>
     <div class="form-group">
         <select class="form-control" (change)="currChange($event.target.value,'Symbol')">
             <option disabled>sellect currency</option>
@@ -24,8 +23,8 @@
         </select>
         <input class="form-control" type="number" [value]="lastChange==='Symbol' ?  symbolValue : result"
             (keyup)="currValChange($event.target.value,'Symbol')">
-    </div>
-    <!-- <h3>Sum</h3>
+    </div> -->
+    <h3>Sum</h3>
     <div *ngFor="let cr of currencyList index as i">
         <div class="form-group">
             <select class="form-control" (change)="changeSumElementSymbol(i,$event.target.value,'Symbol')">
@@ -33,13 +32,23 @@
                 <option *ngFor="let rate of rates" value="{{rate}}">{{rate}}</option>
             </select>
             <input class="form-control" type="number" (keyup)="changeSumElementValue(i,$event.target.value,'Symbol')">
+            <button class="btn btn-danger rm" (click)="removeCurrency(i)">X</button>
         </div>
-    </div> -->
+    </div>
 </div>
-<!-- 
+
 <div>
-    Base: {{base}} to {{symbol}} = {{result}}
+    <label>Base</label>
+    <div class="form-group">
+        <select class="form-control" (change)="currChange($event.target.value,'Base')">
+            <option disabled>sellect currency</option>
+            <option *ngFor="let rate of rates" [selected]="rate=='USD'" value="{{rate}}">{{rate}}</option>
+        </select>
+        
+        <!-- <input class="form-control" type="number" [value]="lastChange==='Base' ?  baseValue : result"
+            (keyup)="currValChange($event.target.value,'Base')"> -->
+    </div>
     <p>
         Sum: {{sum + result}}
     </p>
-</div> -->
+</div>
