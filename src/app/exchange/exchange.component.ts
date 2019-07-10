@@ -13,6 +13,7 @@ export class ExchangeComponent implements OnInit {
   base = 'USD';
   symbol = 'EUR';
   lastChange: CurrencyType = 'Base';
+  currencyList = [];
 
   baseValue = 0;
   symbolValue = 0;
@@ -20,6 +21,7 @@ export class ExchangeComponent implements OnInit {
   symbolRate = 0;
 
   result = 0;
+  sum = 0;
 
   constructor(
     private currencyService: CurrencyService
@@ -69,6 +71,39 @@ export class ExchangeComponent implements OnInit {
           this.result = this.symbolValue / this.symbolRate;
         }
       }
+    });
+  }
+
+
+  changeSumElementSymbol(index, symbol) {
+    this.currencyList[index].symbol = symbol;
+    this.calcSum();
+  }
+  changeSumElementValue(index, value) {
+    this.currencyList[index].value = value;
+    this.calcSum();
+  }
+
+  calcSum() {
+    let i = 0;
+    // console.log(this.currencyList);
+    for (const curr of this.currencyList) {
+      this.currencyService.getRate(curr.symbol, this.symbol).subscribe({
+        next: ({ rates }) => {
+          this.currencyList[i].symbolrate = rates[Object.keys(rates)[0]];
+          this.sum += curr.symbolrate * curr.value;
+          // console.log(this.sum);
+          i++;
+        },
+      });
+    }
+  }
+
+  addCurrency() {
+    this.currencyList.push({
+      value: 0,
+      symbol: '',
+      symbolrate: 0
     });
   }
 

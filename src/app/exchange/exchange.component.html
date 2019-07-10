@@ -1,18 +1,44 @@
 <p>Exchange</p>
-
-<label>Base</label>
-<select (change)="currChange($event.target.value,'Base')">
-    <option disabled>sellect currency</option>
-    <option *ngFor="let rate of rates" [selected]="rate=='USD'" value="{{rate}}">{{rate}}</option>
-</select>
-<input type="number" [value]="lastChange==='Base' ?  baseValue : result" (change)="currValChange($event.target.value,'Base')">
-<label>symbol</label>
-<select (change)="currChange($event.target.value,'Symbol')">
-    <option disabled>sellect currency</option>
-    <option *ngFor="let rate of rates" [selected]="rate=='EUR'" value="{{rate}}">{{rate}}</option>
-</select>
-<input type="number" [value]="lastChange==='Symbol' ?  symbolValue : result" (change)="currValChange($event.target.value,'Symbol')">
+<button (click)="addCurrency()">Add Currency</button>
 
 <div>
-    Base: {{base}}::{{baseValue}} = {{symbol}}::{{result}}
+    <label>Base</label>
+    <select (change)="currChange($event.target.value,'Base')">
+        <option disabled>sellect currency</option>
+        <option *ngFor="let rate of rates" [selected]="rate=='USD'" value="{{rate}}">{{rate}}</option>
+    </select>
+    <input type="number" [value]="lastChange==='Base' ?  baseValue : result"
+        (change)="currValChange($event.target.value,'Base')">
+</div>
+
+<div>
+    <label>symbols</label>
+    <div>
+        <select (change)="currChange($event.target.value,'Symbol')">
+            <option disabled>sellect currency</option>
+            <option *ngFor="let rate of rates" [selected]="rate=='EUR'" value="{{rate}}">{{rate}}</option>
+        </select>
+        <input type="number" [value]="lastChange==='Symbol' ?  symbolValue : result"
+            (change)="currValChange($event.target.value,'Symbol')">
+    </div>
+    <div *ngFor="let cr of currencyList index as i">
+        <div>
+            <select (change)="changeSumElementSymbol(i,$event.target.value,'Symbol')">
+                <option disabled>sellect currency</option>
+                <option *ngFor="let rate of rates" value="{{rate}}">{{rate}}</option>
+            </select>
+            <input type="number" (change)="changeSumElementValue(i,$event.target.value,'Symbol')">
+        </div>
+    </div>
+</div>
+
+<div>
+    Base: {{base}}::{{baseValue}} =
+    <span>
+        {{symbol}},
+    </span>
+    {{result}}
+    <span>
+        Sum:{{sum + result}}
+    </span>
 </div>
