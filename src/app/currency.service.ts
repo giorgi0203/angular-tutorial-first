@@ -21,10 +21,16 @@ export class CurrencyService {
   getRate(base, symbols) {
     return new Observable((subscriber) => {
       const url = `https://api.exchangeratesapi.io/latest?base=${base}&symbols=${symbols}`;
-      this.httpClient.get(url)
-        .subscribe((val) => {
-          subscriber.next(val);
-        });
+      // if we are converting to same base
+      if (base === symbols) {
+        subscriber.next({});
+      } else {
+        this.httpClient.get(url)
+          .subscribe((val) => {
+            subscriber.next(val);
+          });
+      }
+
     });
   }
   getRateSymbols() {

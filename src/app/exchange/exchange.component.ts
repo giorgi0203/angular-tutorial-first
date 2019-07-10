@@ -90,10 +90,16 @@ export class ExchangeComponent implements OnInit {
     for (const curr of this.currencyList) {
       this.currencyService.getRate(curr.symbol, this.symbol).subscribe({
         next: ({ rates }) => {
-          this.currencyList[i].symbolrate = rates[Object.keys(rates)[0]];
-          this.sum += curr.symbolrate * curr.value;
-          // console.log(this.sum);
+          if (rates) {
+            this.currencyList[i].symbolrate = rates[Object.keys(rates)[0]];
+            this.sum += curr.symbolrate * curr.value;
+            // console.log(this.sum);
+          } else {
+            this.currencyList[i].symbolrate = 1;
+            this.sum += curr.symbolrate * curr.value;
+          }
           i++;
+
         },
       });
     }
