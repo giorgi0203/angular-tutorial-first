@@ -1,0 +1,7 @@
+<h1>news works!</h1>
+
+<ul>
+    <li *ngFor="let article of articles">
+        <a routerLink="{{article.id}}">{{article.title}}</a>
+    </li>
+</ul>

@@ -18,6 +18,10 @@ import { UsersComponent } from './users/users.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import { ShippingService } from './shipping.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewsComponent } from './news/news.component';
+import { ArticleComponent } from './article/article.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ShippingService } from './shipping.service';
     RegisterComponent,
     UsersComponent,
     CurrencyComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    DashboardComponent,
+    NewsComponent,
+    ArticleComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +74,21 @@ import { ShippingService } from './shipping.service';
         path: 'currency', component: CurrencyComponent,
       },
       {
+        path: 'dashboard', component: DashboardComponent,
+      },
+      {
+        path: 'dashboard/news', component: NewsComponent,
+      },
+      {
+        path: 'dashboard/news/:articleId', component: ArticleComponent,
+      },
+      {
         path: 'product/:productId', component: ProductDetailsComponent,
+      },
+      {
+        path: 'error', component: ErrorPageComponent,
       }
-    ])
+    ], { enableTracing: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
