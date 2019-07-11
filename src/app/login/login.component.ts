@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm;
+  errorMessage;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +43,8 @@ export class LoginComponent implements OnInit {
     // console.log(this.authService.login(formData.email, formData.password));
     if (this.loginService.login(formData.email, formData.password)) {
       this.router.navigate(['users']);
+    } else {
+      this.errorMessage = 'Wrong email or password';
     }
   }
 

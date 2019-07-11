@@ -15,5 +15,6 @@
             <span *ngIf="password.errors.required">Password is required</span>
         </span>
     </div>
+    <span *ngIf="errorMessage">{{errorMessage}}</span>
     <button class="btn btn-success form-control" [disabled]="loginForm.invalid" type="submit">Login</button>
 </form>
