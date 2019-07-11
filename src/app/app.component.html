@@ -1,5 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-top-bar></app-top-bar>
+
+<div>
+  <ul>
+    <li *ngFor="let breadcrumb of breadcrumbList index as i">
+      <a routerLink="{{breadcrumb.path}}" *ngIf="i!==breadcrumbList.length-1">
+        {{breadcrumb.data.name}}
+      </a>
+      <span *ngIf="i===breadcrumbList.length-1">{{breadcrumb.data.name}}</span>
+    </li>
+  </ul>
+</div>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

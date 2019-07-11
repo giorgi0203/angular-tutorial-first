@@ -50,43 +50,43 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     FormsModule,
     RouterModule.forRoot([
       {
-        path: '', component: ProductListComponent,
+        path: '', data: { name: 'home' }, component: ProductListComponent,
       },
       {
-        path: 'cart', component: CartComponent,
+        path: 'cart', data: { name: 'cart' }, component: CartComponent,
       },
       {
-        path: 'shipping', component: ShippingComponent,
+        path: 'shipping', data: { name: 'shipping' }, component: ShippingComponent,
       },
       {
-        path: 'exchange', component: ExchangeComponent,
+        path: 'exchange', data: { name: 'exchange' }, component: ExchangeComponent,
       },
       {
-        path: 'whishlist', component: WhishlistComponent,
+        path: 'whishlist', data: { name: 'whishlist' }, component: WhishlistComponent,
       },
       {
-        path: 'register', component: RegisterComponent,
+        path: 'register', data: { name: 'register' }, component: RegisterComponent,
       },
       {
-        path: 'users', component: UsersComponent,
+        path: 'users', data: { name: 'users' }, component: UsersComponent,
       },
       {
-        path: 'currency', component: CurrencyComponent,
+        path: 'currency', data: { name: 'currency' }, component: CurrencyComponent,
       },
       {
-        path: 'dashboard', component: DashboardComponent,
+        path: 'dashboard', data: { name: 'dashboard' }, component: DashboardComponent,
       },
       {
-        path: 'dashboard/news', component: NewsComponent,
+        path: 'dashboard/news', data: { name: 'news' }, component: NewsComponent,
       },
       {
-        path: 'dashboard/news/:articleId', component: ArticleComponent,
+        path: 'dashboard/news/:articleId', data: { name: 'article' }, component: ArticleComponent,
       },
       {
-        path: 'product/:productId', component: ProductDetailsComponent,
+        path: 'product/:productId', data: { name: 'product' }, component: ProductDetailsComponent,
       },
       {
-        path: 'error', component: ErrorPageComponent,
+        path: 'error', data: { name: 'error' }, component: ErrorPageComponent,
       }
     ], { enableTracing: true })
   ],
