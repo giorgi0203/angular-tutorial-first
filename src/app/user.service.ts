@@ -6,15 +6,15 @@ import { Injectable } from '@angular/core';
 export class UserService {
   users = [];
   constructor() {
-    // if (localStorage.getItem('Users')) {
-    //   this.users.push(...JSON.parse(localStorage.getItem('Users')));
-    // }
+    if (localStorage.getItem('Users')) {
+      this.users.push(...JSON.parse(localStorage.getItem('Users')));
+    }
   }
 
   addUser(user) {
     this.users.push(user);
+    localStorage.setItem('Users', JSON.stringify(this.users));
     return this.users;
-    // localStorage.setItem('Users', JSON.stringify(this.users));
   }
   updateUser(id, user) {
     this.users[id] = user;
@@ -22,11 +22,11 @@ export class UserService {
   }
   removeUser(id) {
     this.users.splice(id, 1);
+    localStorage.setItem('Users', JSON.stringify(this.users));
     return this.users;
-    // localStorage.setItem('Users', JSON.stringify(this.users));
   }
-  getUser() {
-
+  getUserByEmailAndPassword(email, password) {
+    return this.users.find(user => user.email === email && user.password === password);
   }
   getUsers() {
     return this.users;

@@ -25,6 +25,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AdminComponent } from './admin/admin.component';
 import { GuardComponent } from './guard/guard.component';
 import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
+import { LoginGuard } from './login.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { AuthGuard } from './auth.guard';
     ArticleComponent,
     ErrorPageComponent,
     AdminComponent,
-    GuardComponent
+    GuardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,7 @@ import { AuthGuard } from './auth.guard';
         path: 'register', data: { name: 'register' }, component: RegisterComponent,
       },
       {
-        path: 'users', data: { name: 'users' }, component: UsersComponent,
+        path: 'users', data: { name: 'users' }, component: UsersComponent, canActivate: [LoginGuard]
       },
       {
         path: 'currency', data: { name: 'currency' }, component: CurrencyComponent,
@@ -94,12 +97,17 @@ import { AuthGuard } from './auth.guard';
         path: 'error', data: { name: 'error' }, component: ErrorPageComponent,
       },
       {
+        path: 'login', data: { name: 'login' }, component: LoginComponent,
+      },
+      {
         path: 'admin', data: { name: 'admin' }, component: AdminComponent, canActivate: [AuthGuard]
       },
       {
         path: 'guard', data: { name: 'guard' }, component: GuardComponent,
       }
-    ], { enableTracing: true })
+    ],
+      // { enableTracing: true }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
