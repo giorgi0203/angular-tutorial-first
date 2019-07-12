@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { reduce, map } from 'rxjs/operators';
+import { reduce, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 interface IEmployee {
   id: string;
@@ -8,6 +9,12 @@ interface IEmployee {
   employee_salary: string;
   employee_age: string;
 }
+interface IRegisterForm {
+  name: string;
+  salary: string;
+  age: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +39,17 @@ export class EmployeesService {
         };
       });
     }));
+  }
+
+  createEmplyee(formData: IRegisterForm) {
+    const { name, salary, age } = formData;
+    console.log(formData);
+    return this.httpClient.post<IRegisterForm>(`${this.host}/create`, {
+      name,
+      salary,
+      age
+    }).pipe(
+      catchError(error => of(`Bad Promise: ${error}`))
+    );
   }
 }

@@ -28,6 +28,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './login.guard';
 import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeRegisterComponent } from './employee-register/employee-register.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { EmployeesComponent } from './employees/employees.component';
     AdminComponent,
     GuardComponent,
     LoginComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeeRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -109,6 +111,9 @@ import { EmployeesComponent } from './employees/employees.component';
       },
       {
         path: 'employees', data: { name: 'employees' }, component: EmployeesComponent,
+      },
+      {
+        path: 'employee-register', data: { name: 'employee-register' }, component: EmployeeRegisterComponent,
       }
     ],
       // { enableTracing: true }

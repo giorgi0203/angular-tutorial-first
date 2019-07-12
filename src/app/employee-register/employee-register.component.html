@@ -1,0 +1,27 @@
+<form [formGroup]="emplyeeRegisterForm" (ngSubmit)="onSubmit(emplyeeRegisterForm.value)">
+
+
+    <div class="form-group">
+        <input class="form-control" formControlName="name" type="text" placeholder="name">
+        <span *ngIf="name.invalid && name.touched">
+            <span *ngIf="name.errors.required">name is required</span>
+            <!-- <span *ngIf="name.errors.required">age is required</span> -->
+        </span>
+    </div>
+    <div class="form-group">
+        <input class="form-control" formControlName="salary" type="number" placeholder="salary">
+        <span *ngIf="salary.invalid && salary.touched">
+            <span *ngIf="salary.errors.required">salary is required</span>
+            <!-- <span *ngIf="name.errors.required">age is required</span> -->
+        </span>
+    </div>
+    <div class="form-group">
+        <input class="form-control" formControlName="age" type="number" placeholder="age">
+        <span *ngIf="age.invalid && age.touched">
+            <span *ngIf="age.errors.required">age is required</span>
+            <!-- <span *ngIf="name.errors.required">age is required</span> -->
+        </span>
+    </div>
+
+    <button class="form-control btn btn-success" type="submit">Register</button>
+</form>
