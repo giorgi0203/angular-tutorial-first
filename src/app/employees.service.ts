@@ -16,6 +16,7 @@ interface IRegisterForm {
 }
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,6 +39,21 @@ export class EmployeesService {
           age: employee_age
         };
       });
+    }));
+  }
+
+  getEmployeeByID(userId) {
+    return this.httpClient.get(`${this.host}/employee/${userId}`).pipe(map((employee: IEmployee) => {
+
+      const { id, employee_name, employee_salary, employee_age } = employee;
+
+      return {
+        id,
+        name: employee_name,
+        salary: employee_salary,
+        age: employee_age
+      };
+
     }));
   }
 

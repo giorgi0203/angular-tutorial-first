@@ -1,0 +1,12 @@
+<h1>employee</h1>
+
+<div *ngIf="currentEmployee.name&&currentEmployee.salary&&currentEmployee.age">
+    <p>ID: {{currentEmployee.id}}</p>
+    <p>Name: {{currentEmployee.name}}</p>
+    <p>Salary: {{currentEmployee.salary}}</p>
+    <p>Age: {{currentEmployee.age}}</p>
+</div>
+
+<div *ngIf="!currentEmployee.name&&!currentEmployee.salary&&!currentEmployee.age">
+    <h1>cannot find user</h1>
+</div>
