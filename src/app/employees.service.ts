@@ -44,16 +44,13 @@ export class EmployeesService {
 
   getEmployeeByID(userId) {
     return this.httpClient.get(`${this.host}/employee/${userId}`).pipe(map((employee: IEmployee) => {
-
       const { id, employee_name, employee_salary, employee_age } = employee;
-
       return {
         id,
         name: employee_name,
         salary: employee_salary,
         age: employee_age
       };
-
     }));
   }
 
@@ -61,6 +58,18 @@ export class EmployeesService {
     const { name, salary, age } = formData;
     console.log(formData);
     return this.httpClient.post<IRegisterForm>(`${this.host}/create`, {
+      name,
+      salary,
+      age
+    }).pipe(
+      catchError(error => of(`Bad Promise: ${error}`))
+    );
+  }
+
+  updateEmplyee(id, formData: IRegisterForm) {
+    const { name, salary, age } = formData;
+    console.log(formData);
+    return this.httpClient.put<IRegisterForm>(`${this.host}/update/${id}`, {
       name,
       salary,
       age
