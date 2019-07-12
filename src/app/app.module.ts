@@ -27,6 +27,7 @@ import { GuardComponent } from './guard/guard.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './login.guard';
+import { EmployeesComponent } from './employees/employees.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LoginGuard } from './login.guard';
     ErrorPageComponent,
     AdminComponent,
     GuardComponent,
-    LoginComponent
+    LoginComponent,
+    EmployeesComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +106,9 @@ import { LoginGuard } from './login.guard';
       },
       {
         path: 'guard', data: { name: 'guard' }, component: GuardComponent,
+      },
+      {
+        path: 'employees', data: { name: 'employees' }, component: EmployeesComponent,
       }
     ],
       // { enableTracing: true }
