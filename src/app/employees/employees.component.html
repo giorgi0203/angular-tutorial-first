@@ -7,6 +7,7 @@
             <th>Name</th>
             <th>Salary</th>
             <th>Age</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -16,6 +17,7 @@
             <td> <a [routerLink]="[ '/employee', employee.id ]">{{employee.name}}</a></td>
             <td>{{employee.salary}}</td>
             <td>{{employee.age}}</td>
+            <td><button class="btn btn-danger" (click)="remove(employee.id)">X</button></td>
         </tr>
     </tbody>
 </table>

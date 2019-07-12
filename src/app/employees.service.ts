@@ -77,4 +77,10 @@ export class EmployeesService {
       catchError(error => of(`Bad Promise: ${error}`))
     );
   }
+
+  deleteEmplyee(id) {
+    return this.httpClient.delete<IRegisterForm>(`${this.host}/delete/${id}`).pipe(
+      catchError(error => of(`Bad Promise: ${error}`))
+    );
+  }
 }
