@@ -1,0 +1,18 @@
+ul {
+  li {
+      margin: 5px;
+      background-color: rgb(76, 76, 206);
+      &.active {
+        background-color: rgb(110, 171, 173);
+      }
+    a {
+      padding: 5px 10px;
+      color: white;
+     
+
+      &:hover {
+          background-color: aqua;
+      }
+    }
+  }
+}
