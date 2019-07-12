@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-users',
@@ -14,6 +15,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
+    private loginService: LoginService,
   ) {
     this.users = this.userService.getUsers();
     this.bindForms();
@@ -24,29 +26,29 @@ export class UsersComponent implements OnInit {
     for (const [i, user] of this.users.entries()) {
       const form = this.formBuilder.group(
         {
-          email: [user.email, [
+          email: [{ value: user.email, disabled: this.currentUser.email !== user.email }, [
             Validators.required,
             Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)
           ]],
-          password: [user.password, [
+          password: [{ value: user.password, disabled: this.currentUser.email !== user.email }, [
             Validators.required,
             Validators.minLength(7),
             Validators.pattern(/^[a-zA-Z0-9]*$/),
           ]],
           confirmPassword: user.confirmPassword,
-          nickName: [user.nickName, [
+          nickName: [{ value: user.nickName, disabled: this.currentUser.email !== user.email }, [
             Validators.required,
             Validators.pattern(/^[a-zA-Z0-9,-]*$/),
           ]],
-          phone: [user.phone, [
+          phone: [{ value: user.phone, disabled: this.currentUser.email !== user.email }, [
             Validators.required,
             Validators.pattern(/^[+380]+[0-9]{9}$/),
           ]],
-          website: [user.website, [
+          website: [{ value: user.website, disabled: this.currentUser.email !== user.email }, [
             Validators.required,
             Validators.pattern(/^(https?:\/\/)?(www\.)?([a-zA-Z0-9]+(-?[a-zA-Z0-9])*\.)+[\w]{2,}(\/\S*)?$/),
           ]],
-          license: user.license
+          license: { value: user.license, disabled: this.currentUser.email !== user.email }
         }
       );
       form.valueChanges.subscribe({
@@ -74,6 +76,9 @@ export class UsersComponent implements OnInit {
       this.bindForms();
     }
 
+  }
+  get currentUser() {
+    return this.loginService.user;
   }
   email(i) {
     return this.userForms[i].get('email') as FormControl;

@@ -6,13 +6,13 @@ import { UserService } from './user.service';
 })
 export class LoginService {
 
-  user;
+  currentUser;
 
   constructor(
     private userService: UserService
   ) {
     if (localStorage.getItem('User')) {
-      this.user = { ...JSON.parse(localStorage.getItem('User')) };
+      this.currentUser = { ...JSON.parse(localStorage.getItem('User')) };
     }
   }
 
@@ -22,19 +22,23 @@ export class LoginService {
    * @param password String
    */
   login(email, password) {
-    this.user = this.userService.getUserByEmailAndPassword(email, password);
-    if (this.user) {
-      localStorage.setItem('User', JSON.stringify(this.user));
+    this.currentUser = this.userService.getUserByEmailAndPassword(email, password);
+    if (this.currentUser) {
+      localStorage.setItem('User', JSON.stringify(this.currentUser));
     }
 
-    return this.user ? this.user : false;
+    return this.currentUser ? this.currentUser : false;
   }
   isLoggedIn() {
-    return this.user ? true : false;
+    return this.currentUser ? true : false;
+  }
+
+  get user() {
+    return this.currentUser;
   }
 
   logout() {
-    this.user = undefined;
+    this.currentUser = undefined;
     localStorage.removeItem('User');
   }
 }

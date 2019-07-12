@@ -51,7 +51,7 @@
                     <input type="checkbox" formControlName="license">
                 </td>
                 <td>
-                    <button (click)="removeUser(i)">X</button>
+                    <button *ngIf="currentUser.email === email(i).value" (click)="removeUser(i)">X</button>
                 </td>
                 {{userForm.status | json}}
             </tr>
