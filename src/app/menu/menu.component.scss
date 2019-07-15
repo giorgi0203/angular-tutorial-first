@@ -1,0 +1,58 @@
+.menu {
+    position: absolute;
+    top: 0;
+    background: #0c1b29;
+    width: 300px;
+    height: 100%;
+    padding-left: 30px;
+  
+    > div {
+      display: flex;
+  
+      h1 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        color: #FFF;
+      }
+  
+      a {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 30px;
+        right: 25px;
+        height: 20px;
+        width: 20px;
+  
+        &::before,
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 2px;
+          background: #FFFFFF;
+        }
+  
+        &::before{
+          transform: rotate(45deg);
+        }
+  
+        &::after{
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  
+    nav {
+      display: flex;
+      flex-direction: column;
+  
+      a {
+        color: #FFF;
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+    }
+  }

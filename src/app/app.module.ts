@@ -31,6 +31,8 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeRegisterComponent } from './employee-register/employee-register.component';
 import { EmployeeComponent } from './employee/employee.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MenuComponent } from './menu/menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     EmployeesComponent,
     EmployeeRegisterComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    MenuComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -63,6 +66,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot([
       {
