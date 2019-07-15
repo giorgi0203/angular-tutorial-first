@@ -31,6 +31,8 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeRegisterComponent } from './employee-register/employee-register.component';
 import { EmployeeComponent } from './employee/employee.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -55,12 +57,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     EmployeesComponent,
     EmployeeRegisterComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    LoaderComponent
   ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
