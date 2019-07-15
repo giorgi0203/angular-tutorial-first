@@ -10,7 +10,7 @@ import { ProductAlertsComponent } from './product-alerts/product-alerts.componen
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { WhishlistComponent } from './whishlist/whishlist.component';
 import { RegisterComponent } from './register/register.component';
@@ -33,6 +33,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderComponent } from './loader/loader.component';
+import { Interceptor } from './interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmployeesComponent,
     EmployeeRegisterComponent,
     EmployeeComponent,
-    MenuComponent
+    MenuComponent,
+    LoaderComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -130,7 +133,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       // { enableTracing: true }
     )
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
