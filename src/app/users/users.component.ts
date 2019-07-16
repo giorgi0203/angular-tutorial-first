@@ -69,12 +69,16 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeUser(id) {
-    const res = confirm('you are deleting user:' + this.users.email);
-    if (res) {
-      this.users = [...this.userService.removeUser(id)];
-      this.bindForms();
-    }
+  removeUser(id, modal) {
+    modal.show().subscribe(({ closeReason }) => {
+      if (closeReason === 'CANCEL') {
+
+      } else if (closeReason === 'OK') {
+        this.users = [...this.userService.removeUser(id)];
+        this.bindForms();
+      }
+
+    });
 
   }
   get currentUser() {
