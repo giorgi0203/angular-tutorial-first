@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoaderService {
-  isOpen = false;
+  isOpen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
+  getOObservable() {
+    return this.isOpen;
+  }
+
   start() {
-    this.isOpen = true;
+    console.log('start');
+    this.isOpen.next(true);
   }
   stop() {
-    this.isOpen = false;
+    console.log('stop');
+    this.isOpen.next(false);
   }
 }

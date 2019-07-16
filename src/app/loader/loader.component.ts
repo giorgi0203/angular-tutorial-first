@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-loader',
@@ -21,16 +22,16 @@ export class LoaderComponent implements OnInit {
 
   isOpen = false;
 
-  constructor() { }
+  constructor(
+    private loaderService: LoaderService
+  ) {
+  }
 
   ngOnInit() {
-  }
-
-  openLoader() {
-    this.isOpen = true;
-  }
-  closeLoader() {
-    this.isOpen = false;
+    this.loaderService.getOObservable().subscribe((val) => {
+      console.log(val);
+      this.isOpen = val;
+    });
   }
 
 }
