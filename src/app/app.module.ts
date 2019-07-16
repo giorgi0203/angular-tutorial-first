@@ -35,6 +35,7 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderComponent } from './loader/loader.component';
 import { Interceptor } from './interceptor.interceptor';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { Interceptor } from './interceptor.interceptor';
     EmployeeRegisterComponent,
     EmployeeComponent,
     MenuComponent,
-    LoaderComponent
+    LoaderComponent,
+    ModalComponent
   ],
   imports: [
     NgxPaginationModule,
