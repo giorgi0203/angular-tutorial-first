@@ -2,10 +2,10 @@
     <h1>My Store</h1>
 </a>
 <div>
-    <a [routerLink]="['/cart']" class="button fancy-button">
+    <!-- <a [routerLink]="['/cart']" class="button fancy-button">
         <i class="material-icons">shopping_cart</i>
         Checkout
-    </a>
+    </a> -->
     <a [routerLink]="['/whishlist']" class="button fancy-button">
         <i class="material-icons">star</i>
         whishlist
@@ -38,4 +38,7 @@
         <i class="material-icons">exit_to_app</i>
         Logout
     </a>
+
 </div>
+<button class="button fancy-button" (click)="menu.openMenu()"> Menu </button>
+<app-menu #menu></app-menu>

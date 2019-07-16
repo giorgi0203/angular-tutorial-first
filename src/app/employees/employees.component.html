@@ -1,3 +1,4 @@
+
 <h1>Employees</h1>
 
 <table>
@@ -16,7 +17,7 @@
             <td> <a [routerLink]="[ '/employee', employee.id ]">{{employee.name}}</a></td>
             <td>{{employee.salary}}</td>
             <td>{{employee.age}}</td>
-            <td><button class="btn btn-danger" (click)="remove(employee.id)">X</button></td>
+            <td><button class="btn btn-danger" (click)="remove(employee.id,modal)">X</button></td>
         </tr>
     </tbody>
 </table>
@@ -37,4 +38,6 @@
         <a (click)="setPage(pager.totalPages)">Last</a>
     </li>
 </ul>
+
+<app-modal #modal></app-modal>
 <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->

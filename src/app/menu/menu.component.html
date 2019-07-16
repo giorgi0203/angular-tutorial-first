@@ -1,0 +1,10 @@
+<div [@openClose]="isOpen? 'open' : 'close'" class="menu">
+    <div>
+        <h1>Menu</h1>
+        <a (click)="closeMenu()"></a>
+    </div>
+    <nav>
+        <a [routerLink]="['/dashboard']">Dashboard</a>
+        <a [routerLink]="['/cart']">Cart</a>
+    </nav>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from '../employees.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-employees',
@@ -15,7 +16,8 @@ export class EmployeesComponent implements OnInit {
   allItems;
 
   constructor(
-    private employeesService: EmployeesService
+    private employeesService: EmployeesService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -34,9 +36,17 @@ export class EmployeesComponent implements OnInit {
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
-  remove(id) {
-    this.employeesService.deleteEmplyee(id).subscribe(data => console.log(data));
-    this.employees$ = this.employeesService.getEmplyees();
+  remove(id, modal) {
+    modal.show().subscribe(({ closeReason }) => {
+      if (closeReason === 'CANCEL') {
+
+      } else if (closeReason === 'OK') {
+        this.employeesService.deleteEmplyee(id).subscribe(data => console.log(data));
+        this.employees$ = this.employeesService.getEmplyees();
+      }
+
+    });
+
   }
 
   getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {

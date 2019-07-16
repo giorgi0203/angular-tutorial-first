@@ -1,4 +1,6 @@
-<div class="overlay">
-    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
-    </mat-progress-spinner>
+<div [@openClose]="isOpen? 'open' : 'close'">
+    <div class="spinner-border text-primary center" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="fade"></div>
 </div>
