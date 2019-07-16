@@ -62,13 +62,9 @@ import { ModalComponent } from './modal/modal.component';
     EmployeesComponent,
     EmployeeRegisterComponent,
     EmployeeComponent,
-<<<<<<< HEAD
-    LoaderComponent
-=======
     MenuComponent,
     LoaderComponent,
     ModalComponent
->>>>>>> master
   ],
   imports: [
     NgxPaginationModule,
