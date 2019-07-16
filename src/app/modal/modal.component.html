@@ -1,5 +1,5 @@
 
-<div *ngIf="isOpen" class="custom-modal">
+<div *ngIf="isOpen"  [@openCloseModal]="'in'" class="custom-modal">
     <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -19,5 +19,5 @@
     </div>
 </div>
 
-<div *ngIf="isOpen" class="fade"></div>
+<div  *ngIf="isOpen" [@openCloseFade]="'in'" class="fade"></div>
 
